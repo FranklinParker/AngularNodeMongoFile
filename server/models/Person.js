@@ -17,7 +17,7 @@ PersonSchema.pre('save',async function () {
   personObject.__v = person.__v++;
 
 } );
-c
+
 
 PersonSchema.methods.toJSON = function () {
   const person = this;

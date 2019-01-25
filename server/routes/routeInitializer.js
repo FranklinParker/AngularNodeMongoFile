@@ -41,6 +41,6 @@ module.exports.initRouter = (app) => {
   app.post('/api/person',
     apiHandler(personController.savePerson));
   app.put('/api/person',  apiHandler(personController.updatePerson));
-  app.get('/api/contact', apiHandler(personController.getPeople));
+  app.get('/api/person', apiHandler(personController.getPeople));
 
 }
