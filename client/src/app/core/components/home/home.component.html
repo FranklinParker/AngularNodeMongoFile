@@ -5,7 +5,9 @@
   <mat-card-content fxLayout="column"
                     fxLayoutAlign="center center"
                     fxLayoutGap="10px">
-      <input type="file" placeholder="Choose file"
-      (change)="onFileSelected($event.target.files)">
+    <input type="file" placeholder="Choose file"
+           (change)="onFileSelected($event.target.files)"
+            accept="image/jpeg">
+    <img *ngIf="url" [src]="url" >
   </mat-card-content>
 </mat-card>

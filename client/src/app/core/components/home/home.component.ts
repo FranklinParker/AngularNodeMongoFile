@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  file: File
+  file: File;
+  url: any;
   constructor() { }
 
   ngOnInit() {
@@ -14,9 +15,12 @@ export class HomeComponent implements OnInit {
 
   onFileSelected(files: FileList) {
     this.file = files.item(0);
-    console.log('file change', this.file);
+    const fileReader = new FileReader();
+    const url = fileReader.readAsDataURL(this.file);
+    fileReader.onload = (event: ProgressEvent) => {
+      this.url = (<FileReader>event.target).result;
+    };
+
   }
-
-
 
 }
