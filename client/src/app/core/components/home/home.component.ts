@@ -8,6 +8,7 @@ import {NgForm} from '@angular/forms';
 })
 export class HomeComponent implements OnInit {
   file: File;
+  personName: string;
   url: any;
   constructor() { }
 
@@ -24,6 +25,7 @@ export class HomeComponent implements OnInit {
       };
     } else{
       this.url = null;
+      this.file = undefined;
     }
 
 

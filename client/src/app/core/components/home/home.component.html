@@ -11,19 +11,24 @@
           fxLayoutGap="5px"
           #form="ngForm">
       <mat-form-field>
-        <input matInput placeholder="Person Name">
+        <input matInput placeholder="Person Name"
+               name="person"
+               [(ngModel)]="personName"
+               required>
       </mat-form-field>
       <input type="file"
+             name="file"
              placeholder="Choose Image file (Jpeg only)"
              (change)="onFileSelected($event.target.files)"
-             accept="image/jpeg">
+             accept="image/jpeg"
+             required>
       <img *ngIf="url" [src]="url"
            height="150" width="150">
       <mat-action-row
         fxLayout="column"
         fxLayoutAlign="center center"
         fxLayoutGap="10px">
-        <button mat-raised-button color="primary">Upload File</button>
+        <button mat-raised-button color="primary" [disabled]="form.invalid || !file">Upload File</button>
       </mat-action-row>
     </form>
   </mat-card-content>
