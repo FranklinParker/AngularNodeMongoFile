@@ -8,6 +8,7 @@
     <input type="file" placeholder="Choose file"
            (change)="onFileSelected($event.target.files)"
             accept="image/jpeg">
-    <img *ngIf="url" [src]="url" >
+    <img *ngIf="url" [src]="url"
+         height="150" width="150">
   </mat-card-content>
 </mat-card>
