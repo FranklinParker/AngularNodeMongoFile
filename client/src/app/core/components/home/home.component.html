@@ -1,17 +1,30 @@
 <mat-card>
-  <mat-card-header>
+  <mat-card-header fxLayout="column"
+                   fxLayoutAlign="center center"
+                   fxLayoutGap="10px">
     <h1>Home</h1>
   </mat-card-header>
-  <mat-card-content fxLayout="column"
-                    fxLayoutAlign="center center"
-                    fxLayoutGap="10px">
-    <input type="file" placeholder="Choose file"
-           (change)="onFileSelected($event.target.files)"
-            accept="image/jpeg">
-    <img *ngIf="url" [src]="url"
-         height="150" width="150">
-    <mat-action-row>
-      <button mat-raised-button>Upload File</button>
-    </mat-action-row>
+  <mat-card-content>
+    <form (submit)="onSubmit(form)"
+          fxLayout="column"
+          fxLayoutAlign="center center"
+          fxLayoutGap="5px"
+          #form="ngForm">
+      <mat-form-field>
+        <input matInput placeholder="Person Name">
+      </mat-form-field>
+      <input type="file"
+             placeholder="Choose Image file (Jpeg only)"
+             (change)="onFileSelected($event.target.files)"
+             accept="image/jpeg">
+      <img *ngIf="url" [src]="url"
+           height="150" width="150">
+      <mat-action-row
+        fxLayout="column"
+        fxLayoutAlign="center center"
+        fxLayoutGap="10px">
+        <button mat-raised-button color="primary">Upload File</button>
+      </mat-action-row>
+    </form>
   </mat-card-content>
 </mat-card>

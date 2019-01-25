@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {SharedModule} from '../shared/shared.module';
 import { HomeComponent } from './components/home/home.component';
 import { NavHeaderComponent } from './components/nav-header/nav-header.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { NavHeaderComponent } from './components/nav-header/nav-header.component
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ],
   exports: [
     HomeComponent,

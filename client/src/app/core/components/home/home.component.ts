@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -14,12 +15,21 @@ export class HomeComponent implements OnInit {
   }
 
   onFileSelected(files: FileList) {
-    this.file = files.item(0);
-    const fileReader = new FileReader();
-    const url = fileReader.readAsDataURL(this.file);
-    fileReader.onload = (event: ProgressEvent) => {
-      this.url = (<FileReader>event.target).result;
-    };
+    if(files && files.length>0){
+      this.file = files.item(0);
+      const fileReader = new FileReader();
+      const url = fileReader.readAsDataURL(this.file);
+      fileReader.onload = (event: ProgressEvent) => {
+        this.url = (<FileReader>event.target).result;
+      };
+    } else{
+      this.url = null;
+    }
+
+
+  }
+
+  onSubmit(form:NgForm) {
 
   }
 
