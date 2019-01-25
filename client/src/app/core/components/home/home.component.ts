@@ -6,10 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
+  file: File
   constructor() { }
 
   ngOnInit() {
   }
+
+  onFileSelected(files: FileList) {
+    this.file = files.item(0);
+    console.log('file change', this.file);
+  }
+
+
 
 }
