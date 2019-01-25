@@ -1,0 +1,40 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button
+          fxShow.gt-sm="false"
+          (click)="toggleSideNav.emit()">
+    <mat-icon>Menu</mat-icon>
+  </button>
+  <div *ngIf="loggedInUser"
+       fxFlex fxLayout
+       fxLayoutAlign="flex-center"
+       fxShow.gt-sm="true"
+       fxShow="true">
+    <ul fxLayout
+        fxLayoutGap="10px"
+        class="navigation-list-items">
+      <li>
+        <a mat-stroked-button>Welcome</a></li>
+    </ul>
+  </div>
+  <div fxFlex fxLayout
+       fxLayoutAlign="flex-end"
+       fxShow.gt-sm="true"
+       fxShow="true">
+    <ng-container *ngIf="loggedInUser">
+      <ul fxLayout
+          fxLayoutGap="10px"
+          class="navigation-list-items">
+        <li>
+          <a mat-button [matMenuTriggerFor]="mainMenu">Menu</a>
+          <mat-menu #mainMenu="matMenu"
+                    [overlapTrigger]="false">
+            <mat-label mat-menu-item routerLink="/">
+              <mat-icon>face</mat-icon>
+              Home
+            </mat-label>
+          </mat-menu>
+        </li>
+      </ul>
+    </ng-container>
+  </div>
+</mat-toolbar>
