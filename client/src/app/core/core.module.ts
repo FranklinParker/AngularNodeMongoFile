@@ -13,7 +13,7 @@ import { NavHeaderComponent } from './components/nav-header/nav-header.component
     CommonModule,
     SharedModule
   ],
-  exports:[
+  exports: [
     HomeComponent,
     NavHeaderComponent
   ]
