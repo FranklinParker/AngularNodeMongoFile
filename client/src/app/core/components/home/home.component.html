@@ -10,5 +10,8 @@
             accept="image/jpeg">
     <img *ngIf="url" [src]="url"
          height="150" width="150">
+    <mat-action-row>
+      <button mat-raised-button>Upload File</button>
+    </mat-action-row>
   </mat-card-content>
 </mat-card>
