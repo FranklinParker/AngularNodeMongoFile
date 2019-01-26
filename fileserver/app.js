@@ -88,18 +88,11 @@ app.post('/upload', upload.single('file'), (req, res) => {
 
 // @route GET /files
 // @desc  Display all files in JSON
-app.get('/files', (req, res) => {
-  gfs.files.find().toArray((err, files) => {
-    // Check if files
-    if (!files || files.length === 0) {
-      return res.status(404).json({
-        err: 'No files exist'
-      });
-    }
+app.get('/files', async (req, res) => {
+  const files = await gfs.files.find().toArray();
 
-    // Files exist
-    return res.json(files);
-  });
+  return res.json(files);
+
 });
 
 // @route GET /files/:filename
