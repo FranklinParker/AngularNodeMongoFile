@@ -21,7 +21,7 @@ const savePerson = async (params, file) => {
 				message: 'This Person name exists'
 			};
 		}
-		const person = new Person({name});
+		const person = new Person({name,imageFileId: file.id});
 		const personRecord = await person.save();
 		const numberRecords = await Person.count();
 		return {
@@ -80,7 +80,7 @@ const getPeople = async (params)=>{
 	const pageSize = params.query.pageSize;
 	const currentPage = params.query.currentPage;
   const personQuery = Person.find();
-  const count = await Person.count();
+  const count = await Person.countDocuments();
   if (pageSize && currentPage) {
     personQuery.skip(+pageSize * (+currentPage - 1))
       .limit(+pageSize);
