@@ -39,3 +39,12 @@ export function reducer(state:PersonState = initialState, action: PersonActions)
       return state;
   }
 }
+
+
+export const {
+  selectAll,
+  selectEntities,
+  selectIds,
+  selectTotal
+
+} = adapter.getSelectors();
