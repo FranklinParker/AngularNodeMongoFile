@@ -6,6 +6,10 @@ import {PersonHomeComponent} from './compoments/person-home/person-home.componen
 import {PersonEditComponent} from './compoments/person-edit/person-edit.component';
 import {PersonListComponent} from './compoments/person-list/person-list.component';
 import {SharedModule} from '../shared/shared.module';
+import { StoreModule } from '@ngrx/store';
+import * as fromPerson from './store/person.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { PersonEffects } from './store/person.effects';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,9 @@ import {SharedModule} from '../shared/shared.module';
   imports: [
     CommonModule,
     SharedModule,
-    PersonRoutingModule
+    PersonRoutingModule,
+    StoreModule.forFeature('person', fromPerson.reducer),
+    EffectsModule.forFeature([PersonEffects])
   ],
   exports: [
     PersonHomeComponent

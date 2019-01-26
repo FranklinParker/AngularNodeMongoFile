@@ -5,3 +5,7 @@ ng config cli.defaultCollection @ngrx/schematics
 create an app store:
 ng g store AppState —root —module app.module.ts
 npm i @ngrx/effects @ngrx/entity @ngrx/router-store @ngrx/store @ngrx/store-devtools @ngrx/schematics
+
+ng g reducer person/store/person —flat=false --module person/person.module.ts
+ng g effect   person/store/person  --module person/person.module.ts
+ng g action  person/store/person
