@@ -8,7 +8,9 @@ const Schema = mongoose.Schema;
 
 
 const PersonSchema = new Schema({
-  name: {type: String, required: true,unique: true},
+  firstName: {type: String, required: true},
+  lastName: {type: String, required: true},
+  email: {type: String, required: true,unique: true},
   imageFileId: {type: String}
 
 });
@@ -26,7 +28,7 @@ PersonSchema.methods.toJSON = function () {
   const personObject = person.toObject();
   personObject.id = personObject._id;
   personObject.version = personObject.__v;
-  return _.pick(personObject, ['id', 'name','version', 'imageFileId']);
+  return _.pick(personObject, ['id', 'firstName','lastName', 'email','version', 'imageFileId']);
 
 };
 
