@@ -18,7 +18,7 @@ export class PersonService {
    * @param file file to save
    * @param person to save
    */
-  async savePerson(file: File, person: Person) {
+  public async savePerson(file: File, person: Person) {
     const formData = new FormData();
     formData.append('file', file);
     formData.append('firstName', person.firstName);
@@ -33,6 +33,22 @@ export class PersonService {
       console.log('error saving', e);
     }
 
+
+  }
+
+  /**
+   * load all the people
+   *
+   *
+   */
+  public async loadPeople(){
+    try {
+      const result = await this.httpClient.get(this.apiUrl + 'api/person')
+        .toPromise();
+      console.log('loaded', result);
+    } catch (e) {
+      console.log('error saving', e);
+    }
 
   }
 }
