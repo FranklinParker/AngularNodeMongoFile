@@ -35,6 +35,7 @@ const storage = new GridFsStorage({
     });
   }
 });
+mongoose.connect(config.dbUrl);
 upload = multer({ storage });
 
 module.exports.upload = upload;
