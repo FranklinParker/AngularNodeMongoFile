@@ -11,17 +11,15 @@ mat-form-field{
 
 
 mat-card-header{
+  width: 95%;
   color: white;
   background-color: black;
   padding: 5px;
   border-radius: 8px;
 }
-
-mat-action-row{
-  border-top: black 1pt;
-  margin: 2rem;
-  width: 70%;
+.fill{
+  width: 95%;
+  height: 300px;
 }
-
 
 
