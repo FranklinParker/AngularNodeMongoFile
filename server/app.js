@@ -20,7 +20,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'client')));
 app.use(async (req, res, next)=> {
-  //console.log('req', req);
   console.log('req.hostname', req.hostname);
   console.log('req.originalUrl', req.originalUrl);
   console.log('req.headers.host',req.headers.host);

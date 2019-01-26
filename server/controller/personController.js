@@ -7,11 +7,13 @@ const Person = require('../models/Person');
  * @param params
  * @returns {Promise<*>}
  */
-const savePerson = async (params) => {
-	const personData = params.actionData;
+const savePerson = async (params, file) => {
+  console.log('params', params);
+	const name = params.query.name;
+	console.log('file', file);
 
 	try {
-		const personExisting = await Person.findOne({name: personData.name });
+		const personExisting = await Person.findOne({name:name });
 		console.log('personExisting', personExisting);
 		if(personExisting){
 			return {
@@ -19,7 +21,7 @@ const savePerson = async (params) => {
 				message: 'This Person name exists'
 			};
 		}
-		const person = new Person(personData);
+		const person = new Person({name});
 		const personRecord = await person.save();
 		const numberRecords = await Person.count();
 		return {
