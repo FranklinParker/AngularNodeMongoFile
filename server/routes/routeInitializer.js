@@ -1,4 +1,6 @@
 const extend = Object.assign;
+var multer = require('multer');
+
 
 const userController = require('../controller/userController');
 const personController = require('../controller/personController');
@@ -38,8 +40,7 @@ module.exports.initRouter = (app) => {
   app.post('/api/register', apiHandler(userController.registerUser));
   app.post('/api/login', apiHandler(userController.login));
   //
-  app.post('/api/person',
-    apiHandler(personController.savePerson));
+  app.post('/api/person', apiHandler(personController.savePerson));
   app.put('/api/person',  apiHandler(personController.updatePerson));
   app.get('/api/person', apiHandler(personController.getPeople));
 

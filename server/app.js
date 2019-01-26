@@ -9,8 +9,8 @@ const database = require('./database/mongooseDb');
 
 database.connectToDb();
 
-
 const app = express();
+app.use(express.static(path.join(__dirname, 'public')));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

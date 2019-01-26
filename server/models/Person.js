@@ -1,13 +1,14 @@
 const mongoose = require('mongoose');
 const config = require("../config/config");
 const _ = require('lodash');
+const mongooseUniqueValidator = require('mongoose-unique-validator');
 
 
 const Schema = mongoose.Schema;
 
 
 const PersonSchema = new Schema({
-  name: {type: String, required: true}
+  name: {type: String, required: true,unique: true}
 
 });
 
@@ -25,7 +26,6 @@ PersonSchema.methods.toJSON = function () {
   personObject.id = personObject._id;
   personObject.version = personObject.__v;
   return _.pick(personObject, ['id', 'name','version']);
-
 
 };
 

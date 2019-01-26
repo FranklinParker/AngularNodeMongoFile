@@ -6,9 +6,9 @@ let mongoDB = undefined;
 function connectToDb() {
 	const promiseLib = global.Promise;
 	mongoose.Promise = global.Promise;
-	mongoDB = mongoose.connect(config.dbUrl, {
-		promiseLibrary: promiseLib // Deprecation issue again
-	});
+	mongoDB = mongoose.connect(config.dbUrl,
+		{promiseLibrary: promiseLib, useNewUrlParser: true } // Deprecation issue again
+	);
 	mongoDB
 		.then(function (db) {
 			console.log('Mongodb has been connected ');

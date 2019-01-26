@@ -48,7 +48,7 @@ const updatePerson = async (params) => {
   const personData = params.actionData;
 
   try {
-    const updatePerson = await Person.findById(contactData.id);
+    const updatePerson = await Person.findById(personData.id);
     updatePerson.name = personData.name;
     const result = await updatePerson.save();
 
