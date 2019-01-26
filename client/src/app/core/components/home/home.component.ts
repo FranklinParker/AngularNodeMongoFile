@@ -18,11 +18,18 @@ export class HomeComponent implements OnInit {
   onFileSelected(files: FileList) {
     if(files && files.length>0){
       this.file = files.item(0);
-      const fileReader = new FileReader();
-      const url = fileReader.readAsDataURL(this.file);
-      fileReader.onload = (event: ProgressEvent) => {
-        this.url = (<FileReader>event.target).result;
-      };
+      if(this.file.size>400000){
+        this.url = null;
+        this.file = null;
+        alert('File Exceeds 100k, not allowed');
+      } else{
+        const fileReader = new FileReader();
+        const url = fileReader.readAsDataURL(this.file);
+        fileReader.onload = (event: ProgressEvent) => {
+          this.url = (<FileReader>event.target).result;
+        };
+      }
+
     } else{
       this.url = null;
       this.file = undefined;
