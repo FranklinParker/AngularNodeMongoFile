@@ -13,10 +13,9 @@ const app = express();
 // Middleware
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
-app.set('view engine', 'ejs');
 
 // Mongo URI
-const mongoURI = 'mongodb://brad:brad@ds257838.mlab.com:57838/mongouploads';
+const mongoURI = 'mongodb://localhost:27017/file_upload';
 
 // Create mongo connection
 const conn = mongoose.createConnection(mongoURI);
@@ -50,7 +49,13 @@ const storage = new GridFsStorage({
   }
 });
 const upload = multer({ storage });
-
+app.use((req, res, next)=> {
+  console.log('req.hostname', req.hostname);
+  console.log('req.originalUrl', req.originalUrl);
+  console.log('req.headers.host',req.headers.host);
+  console.log('req.protocol',req.protocol);
+  next();
+});
 // @route GET /
 // @desc Loads form
 app.get('/', (req, res) => {
@@ -69,7 +74,7 @@ app.get('/', (req, res) => {
           file.isImage = false;
         }
       });
-      res.render('index', { files: files });
+      res.json({ files: files });
     }
   });
 });
@@ -77,8 +82,8 @@ app.get('/', (req, res) => {
 // @route POST /upload
 // @desc  Uploads file to DB
 app.post('/upload', upload.single('file'), (req, res) => {
-  // res.json({ file: req.file });
-  res.redirect('/');
+   console.log('file', req.file);
+   res.json({ file: req.file });
 });
 
 // @route GET /files
