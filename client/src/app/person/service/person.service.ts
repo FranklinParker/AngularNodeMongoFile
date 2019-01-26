@@ -41,11 +41,12 @@ export class PersonService {
    *
    *
    */
-  public async loadPeople(){
+  public async loadPeople(): Promise<Person[]>{
     try {
       const result = await this.httpClient.get(this.apiUrl + 'api/person')
         .toPromise();
       console.log('loaded', result);
+      return result['records'];
     } catch (e) {
       console.log('error saving', e);
     }
