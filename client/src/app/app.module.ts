@@ -6,19 +6,13 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {CoreModule} from './core/core.module';
 import {MaterialModule} from './material/material.module';
-import { PersonHomeComponent } from './person/compoments/person-home/person-home.component';
-import { PersonEditComponent } from './person/compoments/person-edit/person-edit.component';
-import { PersonListComponent } from './person/compoments/person-list/person-list.component';
-import {FormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {HttpClientModule} from '@angular/common/http';
+import {PersonModule} from './person/person.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    PersonHomeComponent,
-    PersonEditComponent,
-    PersonListComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -26,9 +20,9 @@ import {HttpClientModule} from '@angular/common/http';
     BrowserAnimationsModule,
     CoreModule,
     MaterialModule,
-    FormsModule,
     FlexLayoutModule,
-    HttpClientModule
+    HttpClientModule,
+    PersonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,7 +5,7 @@ import {PersonHomeComponent} from './person/compoments/person-home/person-home.c
 
 const routes: Routes = [
   {
-    path: '',component: HomeComponent
+    path: '', component: HomeComponent
   },
   {
     path: 'person', component: PersonHomeComponent

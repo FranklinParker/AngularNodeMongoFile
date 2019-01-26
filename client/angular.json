@@ -137,5 +137,8 @@
       }
     }
   },
-  "defaultProject": "AngularNodeMongoFile"
+  "defaultProject": "AngularNodeMongoFile",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }

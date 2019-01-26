@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {MaterialModule} from '../material/material.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {RouterModule} from '@angular/router';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [],
@@ -14,6 +15,7 @@ import {RouterModule} from '@angular/router';
   exports: [
     MaterialModule,
     FlexLayoutModule,
+    FormsModule,
     RouterModule
   ]
 })
