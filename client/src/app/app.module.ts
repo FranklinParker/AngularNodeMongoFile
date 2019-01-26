@@ -11,6 +11,7 @@ import { PersonEditComponent } from './person/compoments/person-edit/person-edit
 import { PersonListComponent } from './person/compoments/person-list/person-list.component';
 import {FormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     CoreModule,
     MaterialModule,
     FormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

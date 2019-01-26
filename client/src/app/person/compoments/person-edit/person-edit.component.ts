@@ -1,6 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Person} from '../../models/person';
 import {NgForm} from '@angular/forms';
+import {PersonService} from '../../service/person.service';
 
 @Component({
   selector: 'app-person-edit',
@@ -17,7 +18,7 @@ export class PersonEditComponent implements OnInit {
   url: any;
   @ViewChild('fileInput') fileInput: ElementRef;
 
-  constructor() {
+  constructor(private personService: PersonService) {
   }
 
   ngOnInit() {
@@ -48,7 +49,9 @@ export class PersonEditComponent implements OnInit {
   }
 
 
-  onSubmit(form: NgForm) {
+  async onSubmit(form: NgForm) {
+    console.log('saving')
+    await this.personService.savePerson(this.file, this.person);
 
   }
 
