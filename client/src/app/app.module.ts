@@ -9,6 +9,8 @@ import {MaterialModule} from './material/material.module';
 import { PersonHomeComponent } from './person/compoments/person-home/person-home.component';
 import { PersonEditComponent } from './person/compoments/person-edit/person-edit.component';
 import { PersonListComponent } from './person/compoments/person-list/person-list.component';
+import {FormsModule} from '@angular/forms';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { PersonListComponent } from './person/compoments/person-list/person-list
     AppRoutingModule,
     BrowserAnimationsModule,
     CoreModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

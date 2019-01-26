@@ -11,21 +11,22 @@ export class HomeComponent implements OnInit {
   personName: string;
   url: any;
   @ViewChild('fileInput') fileInput: ElementRef;
-  constructor(private elementRef: ElementRef) { }
+
+  constructor(private elementRef: ElementRef) {
+  }
 
   ngOnInit() {
   }
 
   onFileSelected(files: FileList) {
-    if(files && files.length>0){
+    if (files && files.length > 0) {
       this.file = files.item(0);
-      if(this.file.size>800000){
+      if (this.file.size > 800000) {
         this.url = null;
         this.file = null;
-        //(<HTMLInputElement>this.fileInput.nativeElement).files =undefined;
-        alert('File Exceeds 400k, not allowed' );
+        alert('File Exceeds 400k, not allowed');
 
-      } else{
+      } else {
         const fileReader = new FileReader();
         const url = fileReader.readAsDataURL(this.file);
         fileReader.onload = (event: ProgressEvent) => {
@@ -33,7 +34,7 @@ export class HomeComponent implements OnInit {
         };
       }
 
-    } else{
+    } else {
       this.url = null;
       this.file = undefined;
     }
@@ -42,7 +43,7 @@ export class HomeComponent implements OnInit {
   }
 
 
-  onSubmit(form:NgForm) {
+  onSubmit(form: NgForm) {
 
   }
 
