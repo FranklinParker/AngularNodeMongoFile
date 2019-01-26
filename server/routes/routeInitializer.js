@@ -1,8 +1,5 @@
 const extend = Object.assign;
-const multer = require('multer');
-const upload = multer({dest: 'public/images'});
-
-
+const upload = require('../database/mongooseDb').upload;
 
 const userController = require('../controller/userController');
 const personController = require('../controller/personController');

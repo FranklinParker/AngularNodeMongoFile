@@ -10,7 +10,7 @@ const Person = require('../models/Person');
 const savePerson = async (params, file) => {
   console.log('params', params);
 	const name = params.query.name;
-	console.log('file', file);
+	console.log('savePerson file', file);
 
 	try {
 		const personExisting = await Person.findOne({name:name });

@@ -12,7 +12,7 @@ const app = express();
 
 // Middleware
 app.use(bodyParser.json());
-app.use(methodOverride('_method'));
+//app.use(methodOverride('_method'));
 
 // Mongo URI
 const mongoURI = 'mongodb://localhost:27017/file_upload';
@@ -25,7 +25,7 @@ let gfs;
 
 conn.once('open', () => {
   // Init stream
-  gfs = Grid(conn.db, mongoose.mongo);
+  gfs = Grid(conn, mongoose.mongo);
   gfs.collection('uploads');
 });
 
