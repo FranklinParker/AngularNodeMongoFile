@@ -81,7 +81,7 @@ app.get('/', (req, res) => {
 
 // @route POST /upload
 // @desc  Uploads file to DB
-app.post('/upload', upload.single('file'), (req, res) => {
+app.post('/upload', upload.single('file'), async (req, res) => {
    console.log('file', req.file);
    res.json({ file: req.file });
 });
