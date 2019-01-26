@@ -10,7 +10,9 @@ let connection = undefined;
 let gridFileStorage = undefined;
 let upload = undefined;
 const promiseLib = global.Promise;
-connection = mongoose.createConnection(config.dbUrl,  { useNewUrlParser: true } );
+
+mongoose.set('useCreateIndex', true);
+connection = mongoose.createConnection(config.dbUrl,{useNewUrlParser: true} );
 connection.once('open', () => {
   // Init stream
   gridFileStorage = Grid(connection, mongoose.mongo);
@@ -35,7 +37,7 @@ const storage = new GridFsStorage({
     });
   }
 });
-mongoose.connect(config.dbUrl);
+mongoose.connect(config.dbUrl, {useNewUrlParser: true});
 upload = multer({ storage });
 
 module.exports.upload = upload;
