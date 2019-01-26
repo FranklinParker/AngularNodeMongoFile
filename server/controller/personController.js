@@ -50,7 +50,10 @@ const updatePerson = async (params) => {
 
   try {
     const updatePerson = await Person.findById(personData.id);
-    updatePerson.name = personData.name;
+    updatePerson.firstName = personData.firstName;
+    updatePerson.lastName = personData.lastName;
+    updatePerson.email = personData.email;
+
     const result = await updatePerson.save();
 
     console.log('updated person', updatePerson);
