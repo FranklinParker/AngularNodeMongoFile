@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import {NgForm} from '@angular/forms';
 
 @Component({
@@ -10,7 +10,8 @@ export class HomeComponent implements OnInit {
   file: File;
   personName: string;
   url: any;
-  constructor() { }
+  @ViewChild('fileInput') fileInput: ElementRef;
+  constructor(private elementRef: ElementRef) { }
 
   ngOnInit() {
   }
@@ -18,10 +19,12 @@ export class HomeComponent implements OnInit {
   onFileSelected(files: FileList) {
     if(files && files.length>0){
       this.file = files.item(0);
-      if(this.file.size>400000){
+      if(this.file.size>800000){
         this.url = null;
         this.file = null;
-        alert('File Exceeds 100k, not allowed');
+        //(<HTMLInputElement>this.fileInput.nativeElement).files =undefined;
+        alert('File Exceeds 400k, not allowed' );
+
       } else{
         const fileReader = new FileReader();
         const url = fileReader.readAsDataURL(this.file);
@@ -37,6 +40,7 @@ export class HomeComponent implements OnInit {
 
 
   }
+
 
   onSubmit(form:NgForm) {
 
