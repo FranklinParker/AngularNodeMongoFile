@@ -9,6 +9,12 @@ import {MaterialModule} from './material/material.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {HttpClientModule} from '@angular/common/http';
 import {PersonModule} from './person/person.module';
+import {EffectsModule} from '@ngrx/effects';
+import {StoreModule} from '@ngrx/store';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+
+import {environment} from '../environments/environment';
+import {metaReducers, reducers} from './reducers';
 
 @NgModule({
   declarations: [
@@ -22,7 +28,11 @@ import {PersonModule} from './person/person.module';
     MaterialModule,
     FlexLayoutModule,
     HttpClientModule,
-    PersonModule
+    PersonModule,
+    EffectsModule.forRoot([]),
+    StoreModule.forRoot(reducers, { metaReducers }),
+    !environment.production ? StoreDevtoolsModule.instrument() : []
+
   ],
   providers: [],
   bootstrap: [AppComponent]

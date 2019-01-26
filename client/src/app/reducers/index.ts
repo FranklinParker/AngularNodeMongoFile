@@ -3,11 +3,13 @@ import {
   ActionReducerMap,
   createFeatureSelector,
   createSelector,
-  MetaReducer, State
+  MetaReducer
 } from '@ngrx/store';
 import { environment } from '../../environments/environment';
 
-export interface AppState {}
+export interface AppState {
+
+}
 
 export const reducers: ActionReducerMap<AppState> = {
 

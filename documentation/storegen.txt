@@ -1,0 +1,7 @@
+ng config cli.defaultCollection @ngrx/schematics
+
+
+
+create an app store:
+ng g store AppState —root —module app.module.ts
+npm i @ngrx/effects @ngrx/entity @ngrx/router-store @ngrx/store @ngrx/store-devtools @ngrx/schematics
