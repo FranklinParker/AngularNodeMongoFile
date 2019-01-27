@@ -45,10 +45,9 @@ export class PersonService {
     try {
       const result = await this.httpClient.get(this.apiUrl + 'api/person')
         .toPromise();
-      console.log('loaded', result);
       return result['records'];
     } catch (e) {
-      console.log('error saving', e);
+      console.log('error loading', e);
     }
 
   }
