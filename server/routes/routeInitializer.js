@@ -3,6 +3,7 @@ const upload = require('../database/mongooseDb').upload;
 
 const userController = require('../controller/userController');
 const personController = require('../controller/personController');
+const imageFileController = require('../controller/imageFileController');
 
 
 const checkAuth = require('../auth/checkAuth');
@@ -53,6 +54,16 @@ const apiHandlerFile = (businessMethod, file, message) => {
 
 }
 
+const apiHandlerFileContents = (businessMethod) => {
+  return function(req, res){
+    const id = req.params.id;
+    businessMethod(id,res);
+
+  }
+}
+
+
+
 
 
 module.exports.initRouter = (app) => {
@@ -62,5 +73,6 @@ module.exports.initRouter = (app) => {
   app.post('/api/person',upload.single('file'), apiHandlerFile(personController.savePerson));
   app.put('/api/person',  apiHandler(personController.updatePerson));
   app.get('/api/person', apiHandler(personController.getPeople));
+  app.get('/api/fileContents/:id', apiHandlerFileContents(imageFileController.getImage));
 
 }

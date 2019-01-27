@@ -42,4 +42,6 @@ upload = multer({ storage });
 
 module.exports.upload = upload;
 
+module.exports.gridFileStorage = gridFileStorage;
+
 
