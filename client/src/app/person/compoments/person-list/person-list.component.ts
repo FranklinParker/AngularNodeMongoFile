@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {AppState} from '../../../reducers';
 import {select, Store} from '@ngrx/store';
 import {selectPeople} from '../../store/person.selector';
 import {Person} from '../../models/person';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import {MatPaginator, MatTableDataSource} from '@angular/material';
 
 @Component({
   selector: 'app-person-list',
@@ -18,6 +19,11 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
   ]
 })
 export class PersonListComponent implements OnInit {
+  dataSource = new MatTableDataSource<Person>([]);
+  displayedColumns = ['firstName', 'lastName', 'email'];
+  personExpanded: Person = undefined;
+  @Output() personSelected = new EventEmitter<Person>();
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private store: Store<AppState>) { }
 
@@ -26,7 +32,20 @@ export class PersonListComponent implements OnInit {
       select(selectPeople)
     ).subscribe((people: Person[])=>{
       console.log('people', people);
+      this.dataSource.data = people;
     });
+  }
+
+  rowClick(person: Person){
+    if(this.personExpanded!==undefined
+      && this.personExpanded.id === person.id){
+      this.personExpanded=undefined;
+
+    }else{
+      //this.store.dispatch(new GroupSelected({group: element}));
+      this.personExpanded = person;
+    }
+
   }
 
 }
