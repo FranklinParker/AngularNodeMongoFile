@@ -20,7 +20,7 @@ import {MatPaginator, MatTableDataSource} from '@angular/material';
 })
 export class PersonListComponent implements OnInit {
   dataSource = new MatTableDataSource<Person>([]);
-  displayedColumns = ['firstName', 'lastName', 'email'];
+  displayedColumns = ['firstName', 'lastName', 'email','version'];
   personExpanded: Person = undefined;
   @Output() personSelected = new EventEmitter<Person>();
   @ViewChild(MatPaginator) paginator: MatPaginator;

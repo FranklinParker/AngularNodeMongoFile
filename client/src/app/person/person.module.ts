@@ -10,12 +10,14 @@ import { StoreModule } from '@ngrx/store';
 import * as fromPerson from './store/person.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { PersonEffects } from './store/person.effects';
+import { PersonListExpandComponent } from './compoments/person-list/person-list-expand/person-list-expand.component';
 
 @NgModule({
   declarations: [
     PersonHomeComponent,
     PersonEditComponent,
-    PersonListComponent
+    PersonListComponent,
+    PersonListExpandComponent
   ],
   imports: [
     CommonModule,

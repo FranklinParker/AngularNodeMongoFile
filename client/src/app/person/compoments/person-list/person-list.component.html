@@ -3,6 +3,59 @@
     <h1>People</h1>
   </mat-card-header>
   <mat-card-content>
+    <table mat-table
+           [dataSource]="dataSource" multiTemplateDataRows
+           class="mat-elevation-z8">
 
+      <ng-container matColumnDef="firstName" >
+        <th mat-header-cell
+            *matHeaderCellDef >First Name</th>
+        <td mat-cell *matCellDef="let element" >
+          {{element.firstName}}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="lastName" >
+        <th mat-header-cell
+            *matHeaderCellDef >Last Name</th>
+        <td mat-cell *matCellDef="let element" >
+          {{element.lastName}}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="email" >
+        <th mat-header-cell
+            *matHeaderCellDef >Email</th>
+        <td mat-cell *matCellDef="let element" >
+          {{element.email}}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="version" >
+        <th mat-header-cell
+            *matHeaderCellDef >Version</th>
+        <td mat-cell *matCellDef="let element" >
+          <button mat-button (click)="selectPersonForEdit(element)" color="primary">
+            Edit Person Version: {{element.version}}
+          </button>
+        </td>
+      </ng-container>
+      <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+      <ng-container matColumnDef="expandedDetail">
+        <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+          <div class="example-element-detail"
+               [@detailExpand]="element == personExpanded ? 'expanded' : 'collapsed'">
+        <td class="example-element-detail" >
+          <app-person-list-expand [person]="personExpanded"></app-person-list-expand>
+        </td>
+        </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let element; columns: displayedColumns;"
+          [class.example-element-row]="personExpanded === element"
+          [class.example-expanded-row]="personExpanded === element"
+          (click)="rowClick(element)">
+      </tr>
+      <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+    </table>
   </mat-card-content>
 </mat-card>
