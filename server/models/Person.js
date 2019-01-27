@@ -15,10 +15,11 @@ const PersonSchema = new Schema({
 
 });
 
-PersonSchema.pre('save',async function () {
+PersonSchema.pre('save',async function (next) {
   const person = this;
   const personObject = person.toObject();
   personObject.__v = person.__v++;
+  next();
 
 } );
 

@@ -2,7 +2,6 @@ const gridFileStorage = require('../database/mongooseDb').gridFileStorage;
 
 const getImage = (fileName ,res)=>{
   console.log('fileName:'+fileName);
-  console.log('gridFileStorage', gridFileStorage);
 
   const gfs = gridFileStorage();
   gfs.files.findOne({filename: fileName}, (err, file) => {

@@ -83,7 +83,7 @@ const getPeople = async (params)=>{
 	const pageSize = params.query.pageSize;
 	const currentPage = params.query.currentPage;
   const personQuery = Person.find();
-  const count = await Person.countDocuments();
+  const count = await Person.count();
   if (pageSize && currentPage) {
     personQuery.skip(+pageSize * (+currentPage - 1))
       .limit(+pageSize);
