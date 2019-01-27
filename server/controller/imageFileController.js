@@ -1,13 +1,13 @@
 const gridFileStorage = require('../database/mongooseDb').gridFileStorage;
 
-const getImage = (id ,res)=>{
-  console.log('fileId:'+id);
+const getImage = (fileName ,res)=>{
+  console.log('fileName:'+fileName);
   console.log('gridFileStorage', gridFileStorage);
-  console.log('res', res);
 
-
-  gridFileStorage.files.findOne({ _id: id }, (err, file) => {
+  const gfs = gridFileStorage();
+  gfs.files.findOne({filename: fileName}, (err, file) => {
     console.log('err', err);
+    console.log('file', file);
     if (!file || file.length === 0) {
       return res.status(404).json({
         err: 'No file exists'
@@ -17,7 +17,7 @@ const getImage = (id ,res)=>{
     // Check if image
     if (file.contentType === 'image/jpeg' || file.contentType === 'image/png') {
       // Read output to browser
-      const readstream = gridFileStorage.createReadStream(file.filename);
+      const readstream = gfs.createReadStream(file.filename);
       readstream.pipe(res);
     } else {
       res.status(404).json({

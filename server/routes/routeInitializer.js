@@ -56,8 +56,8 @@ const apiHandlerFile = (businessMethod, file, message) => {
 
 const apiHandlerFileContents = (businessMethod) => {
   return function(req, res){
-    const id = req.params.id;
-    businessMethod(id,res);
+    const fileName = req.params.fileName;
+    businessMethod(fileName,res);
 
   }
 }
@@ -73,6 +73,6 @@ module.exports.initRouter = (app) => {
   app.post('/api/person',upload.single('file'), apiHandlerFile(personController.savePerson));
   app.put('/api/person',  apiHandler(personController.updatePerson));
   app.get('/api/person', apiHandler(personController.getPeople));
-  app.get('/api/fileContents/:id', apiHandlerFileContents(imageFileController.getImage));
+  app.get('/api/fileContents/:fileName', apiHandlerFileContents(imageFileController.getImage));
 
 }

@@ -8,6 +8,7 @@ const Person = require('../models/Person');
  * @returns {Promise<*>}
  */
 const savePerson = async (params, file) => {
+  console.log('file', file);
 	const {firstName, lastName, email} = params.actionData;
 	console.log('actionData', params.actionData);
 

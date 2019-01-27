@@ -17,7 +17,7 @@ connection.once('open', () => {
   // Init stream
   gridFileStorage = Grid(connection, mongoose.mongo);
   gridFileStorage.collection('uploads');
-  console.log(' Mongo connected');
+  console.log(' gfs Mongo connected');
 });
 const storage = new GridFsStorage({
   url: config.dbUrl,
@@ -39,9 +39,12 @@ const storage = new GridFsStorage({
 });
 mongoose.connect(config.dbUrl, {useNewUrlParser: true});
 upload = multer({ storage });
+console.log('gridFileStorage',gridFileStorage);
 
 module.exports.upload = upload;
 
-module.exports.gridFileStorage = gridFileStorage;
+module.exports.gridFileStorage = ()=>{
+  return gridFileStorage;
+}
 
 
