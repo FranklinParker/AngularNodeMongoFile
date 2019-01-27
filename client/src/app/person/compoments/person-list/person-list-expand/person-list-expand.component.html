@@ -3,7 +3,24 @@
     fxLayout="column"
     fxLayoutAlign="center center"
     fxLayoutGap="5px">
-    <p>{{person?.firstName}} {{person?.lastName}} {{person?.email}}</p>
+    <mat-form-field>
+      <input matInput name="firstName"
+             placeholder="First Name"
+             disabled
+             [(ngModel)]="person.firstName">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput name="lastName"
+             placeholder="Last Name"
+             disabled
+             [(ngModel)]="person.lastName">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput name="email"
+             placeholder="Email"
+             disabled
+             [(ngModel)]="person.email">
+    </mat-form-field>
     <img *ngIf="showImage" height="150" width="150" [src]="imageSource"><
   </mat-card-content>
 </mat-card>
