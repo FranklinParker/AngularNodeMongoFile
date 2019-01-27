@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {PersonService} from '../../service/person.service';
 import {Store} from '@ngrx/store';
 import {AppState} from '../../../reducers';
 import {LoadPersons} from '../../store/person.actions';
