@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {PersonService} from '../../service/person.service';
+import {Store} from '@ngrx/store';
+import {AppState} from '../../../reducers';
+import {LoadPersons} from '../../store/person.actions';
 
 @Component({
   selector: 'app-person-home',
@@ -8,10 +11,10 @@ import {PersonService} from '../../service/person.service';
 })
 export class PersonHomeComponent implements OnInit {
 
-  constructor(private personService: PersonService) { }
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
-    this.personService.loadPeople();
+    this.store.dispatch(new LoadPersons());
   }
 
 }

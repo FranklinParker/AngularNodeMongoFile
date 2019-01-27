@@ -1,4 +1,3 @@
-import { Action } from '@ngrx/store';
 import {createEntityAdapter, EntityAdapter, EntityState} from '@ngrx/entity';
 import {Person} from '../models/person';
 import {PersonActions, PersonActionTypes} from './person.actions';
@@ -35,6 +34,10 @@ export const initialState: PersonState = adapter.getInitialState({
 
 export function reducer(state:PersonState = initialState, action: PersonActions): PersonState {
   switch (action.type) {
+    case PersonActionTypes.PeopleLoaded:{
+      return adapter.addAll(action.payload.people,
+        {...state, recordsLoaded: true, recordsLoading: false});
+    }
     default:
       return state;
   }

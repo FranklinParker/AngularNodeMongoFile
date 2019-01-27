@@ -5,7 +5,6 @@ import {filter, mergeMap, withLatestFrom} from 'rxjs/operators';
 
 import {AppState} from '../../reducers';
 import {PersonService} from '../service/person.service';
-import {mergeMap, withLatestFrom} from 'rxjs/operators';
 import {LoadPersons, PeopleLoaded, PersonActionTypes} from './person.actions';
 import {arePeopleLoaded} from './person.selector';
 import {Person} from '../models/person';
@@ -18,12 +17,11 @@ export class PersonEffects {
     ofType<LoadPersons>(PersonActionTypes.LoadPersons),
     withLatestFrom(this.store.pipe(select(arePeopleLoaded))),
     filter(([action, isLoaded]) => {
-      console.log('action', action);
       return !isLoaded;
     }),
     mergeMap(async () => {
       const people: Person[] = await this.personService.loadPeople();
-      return new PeopleLoaded({people});
+      return new PeopleLoaded({people:people});
     })
   );
   constructor(private actions$: Actions,
