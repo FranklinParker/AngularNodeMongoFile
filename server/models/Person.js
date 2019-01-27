@@ -11,7 +11,7 @@ const PersonSchema = new Schema({
   firstName: {type: String, required: true},
   lastName: {type: String, required: true},
   email: {type: String, required: true,unique: true},
-  imageFileId: {type: String}
+  imageFileName: {type: String}
 
 });
 
@@ -29,7 +29,7 @@ PersonSchema.methods.toJSON = function () {
   const personObject = person.toObject();
   personObject.id = personObject._id;
   personObject.version = personObject.__v;
-  return _.pick(personObject, ['id', 'firstName','lastName', 'email','version', 'imageFileId']);
+  return _.pick(personObject, ['id', 'firstName','lastName', 'email','version', 'imageFileName']);
 
 };
 

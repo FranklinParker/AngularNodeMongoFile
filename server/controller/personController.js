@@ -21,7 +21,7 @@ const savePerson = async (params, file) => {
 			};
 		}
 		const person = new Person(
-		  {firstName,lastName, email, imageFileId: file.id});
+		  {firstName,lastName, email, imageFileName: file.filename});
 		const personRecord = await person.save();
 		const numberRecords = await Person.count();
 		return {

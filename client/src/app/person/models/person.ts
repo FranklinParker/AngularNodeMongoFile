@@ -3,7 +3,7 @@ export interface Person {
   firstName: string;
   lastName: string;
   email: string;
-  imageFileId?:  string;
+  imageFileName?:  string;
   version?:number;
 
 }
