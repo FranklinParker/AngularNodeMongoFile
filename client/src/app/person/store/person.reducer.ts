@@ -11,7 +11,7 @@ export const BLANK_PERSON: Person = {
   firstName: undefined,
   lastName: undefined,
   email: undefined,
-  imageFileId: undefined
+  imageFileName: undefined
 };
 
 export interface PersonState extends EntityState<Person> {

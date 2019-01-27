@@ -1,5 +1,9 @@
 <mat-card>
-  <mat-card-content>
-    {{person?.firstName}} {{person?.lastName}} {{person?.email}}
+  <mat-card-content
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    fxLayoutGap="5px">
+    <p>{{person?.firstName}} {{person?.lastName}} {{person?.email}}</p>
+    <img *ngIf="showImage" height="150" width="150" [src]="imageSource"><
   </mat-card-content>
 </mat-card>
