@@ -36,9 +36,8 @@ export class PersonService {
 
     } catch (e) {
       console.log('error saving', e);
+      throw e;
     }
-
-
   }
 
   /**

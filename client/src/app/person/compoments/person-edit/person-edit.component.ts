@@ -2,6 +2,7 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Person} from '../../models/person';
 import {NgForm} from '@angular/forms';
 import {PersonService} from '../../service/person.service';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-person-edit',
@@ -9,6 +10,7 @@ import {PersonService} from '../../service/person.service';
   styleUrls: ['./person-edit.component.scss']
 })
 export class PersonEditComponent implements OnInit {
+  isSaving: boolean = false;
   person: Person = {
     firstName: undefined,
     lastName: undefined,
@@ -18,7 +20,8 @@ export class PersonEditComponent implements OnInit {
   url: any;
   @ViewChild('fileInput') fileInput: ElementRef;
 
-  constructor(private personService: PersonService) {
+  constructor(private personService: PersonService,
+              private snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
@@ -50,8 +53,25 @@ export class PersonEditComponent implements OnInit {
 
 
   async onSubmit(form: NgForm) {
-    console.log('saving')
-    await this.personService.savePerson(this.file, this.person);
+    this.isSaving = true;
+    await this.saveNewPerson();
+
+  }
+
+  async saveNewPerson(){
+    try{
+      await this.personService.savePerson(this.file, this.person);
+      this.isSaving = false;
+      this.snackBar.open('New Person saved', '', {
+        duration: 8000
+      });
+    }catch (e){
+      this.snackBar.open('New Person Save Error', '', {
+        duration: 8000
+      });
+      this.isSaving = false;
+
+    }
 
   }
 
