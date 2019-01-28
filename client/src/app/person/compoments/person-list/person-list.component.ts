@@ -48,4 +48,9 @@ export class PersonListComponent implements OnInit {
 
   }
 
+  onHeaderLastName(){
+    alert('header last name');
+  }
+
+
 }
