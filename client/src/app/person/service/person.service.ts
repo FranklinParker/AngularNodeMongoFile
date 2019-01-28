@@ -2,6 +2,9 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {Person} from '../models/person';
+import {AppState} from '../../reducers';
+import {Store} from '@ngrx/store';
+import {AddPerson} from '../store/person.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +12,8 @@ import {Person} from '../models/person';
 export class PersonService {
   apiUrl: string = environment.url;
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient,
+              private store: Store<AppState>) {
   }
 
   /**
@@ -28,7 +32,8 @@ export class PersonService {
     try {
       const result = await this.httpClient.post(this.apiUrl + 'api/person', formData)
         .toPromise();
-      console.log('saved', result);
+      this.store.dispatch(new AddPerson({person: result['record']}))
+
     } catch (e) {
       console.log('error saving', e);
     }

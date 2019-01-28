@@ -3,8 +3,8 @@ import {Person} from '../models/person';
 
 export enum PersonActionTypes {
   LoadPersons = '[Person] Load Persons',
-  PeopleLoaded = '[PeopleLoaded] People Loaded'
-
+  PeopleLoaded = '[PeopleLoaded] People Loaded',
+  AddPerson = '[AddPerson] Add Person'
 }
 
 export class LoadPersons implements Action {
@@ -14,10 +14,17 @@ export class LoadPersons implements Action {
 
 export class PeopleLoaded implements Action {
   readonly type = PersonActionTypes.PeopleLoaded;
-
   constructor(public payload: { people: Person[] }) {
   }
 }
 
+
+export class AddPerson implements Action {
+  readonly type = PersonActionTypes.AddPerson;
+  constructor(public payload: { person: Person }) {
+  }
+}
+
 export type PersonActions = LoadPersons
-  | PeopleLoaded;
+  | PeopleLoaded
+  | AddPerson;

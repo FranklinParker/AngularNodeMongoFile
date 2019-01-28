@@ -38,11 +38,14 @@ export function reducer(state:PersonState = initialState, action: PersonActions)
       return adapter.addAll(action.payload.people,
         {...state, recordsLoaded: true, recordsLoading: false});
     }
+    case PersonActionTypes.AddPerson: {
+      return adapter.addOne(action.payload.person,
+        {...state, recordsLoading: false,person:action.payload.person});
+    }
     default:
       return state;
   }
 }
-
 
 export const {
   selectAll,
