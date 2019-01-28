@@ -73,3 +73,15 @@ tr.example-element-row:not(.example-expanded-row):active {
 .example-element-description-attribution {
   opacity: 0.5;
 }
+
+
+.mat-header-row{
+  background-color: black;
+  text-align: left;
+}
+
+
+.mat-header-cell{
+  color: white;
+  font-size: 14pt;
+}
