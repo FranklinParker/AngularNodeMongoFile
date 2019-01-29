@@ -40,4 +40,25 @@ mat-card-header{
   font-size: 30px;
 }
 
+@media screen and (max-width: 600px) {
+  .flex-container {
+    display: flex;
+    height: 500px;
+    flex-wrap: wrap;
+    align-content: center;
+    background-color: DodgerBlue;
+  }
+
+  .flex-container > mat-card {
+    background-color: #f1f1f1;
+    width: 70px;
+    height: 60px;
+    margin: 5px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 24px;
+  }
+
+}
+
 
